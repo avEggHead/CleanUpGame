@@ -49,13 +49,13 @@ namespace CleanUp
 
             // Update the image positions with Arrow keys
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                mJPGPosition.X--;
+                mJPGPosition.X = mJPGPosition.X - 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                mJPGPosition.X++;
+                mJPGPosition.X = mJPGPosition.X + 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                mJPGPosition.Y--;
+                mJPGPosition.Y = mJPGPosition.Y - 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                mJPGPosition.Y++;
+                mJPGPosition.Y = mJPGPosition.Y + 5;
 
             #endregion Keyboard
 

@@ -41,6 +41,19 @@ namespace CleanUp
 
             // TODO: Add your update logic here
 
+            #region Controller
+
+            // Allows the game to exit
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            {
+                this.Exit();
+            }
+
+            // Update the image positions with left/right thumbsticks
+            mJPGPosition += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+
+            #endregion Controller
+
             #region Keyboard
 
             // Allows the game to exit
@@ -64,7 +77,7 @@ namespace CleanUp
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             // TODO: Add your drawing code here
 

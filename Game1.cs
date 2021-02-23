@@ -9,8 +9,10 @@ namespace CleanUp
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private Texture2D mJPGImage;
-        private Vector2 mJPGPosition;
+        private Texture2D yellowAvatar;
+        private Texture2D blueAvatar;
+        private Vector2 yellowAvatarPosition;
+        private Vector2 blueAvatarPosition;
 
         public Game1()
         {
@@ -31,7 +33,8 @@ namespace CleanUp
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // Load the images.
-            mJPGImage = Content.Load<Texture2D>("yellow_player_avatar");
+            yellowAvatar = Content.Load<Texture2D>("yellow_player_avatar");
+            blueAvatar = Content.Load<Texture2D>("blue_player_avatar");
         }
 
         protected override void Update(GameTime gameTime)
@@ -50,7 +53,8 @@ namespace CleanUp
             }
 
             // Update the image positions with left/right thumbsticks
-            mJPGPosition += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+            yellowAvatarPosition += GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+            blueAvatarPosition += GamePad.GetState(PlayerIndex.One).ThumbSticks.Right;
 
             #endregion Controller
 
@@ -62,13 +66,22 @@ namespace CleanUp
 
             // Update the image positions with Arrow keys
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
-                mJPGPosition.X = mJPGPosition.X - 5;
+                yellowAvatarPosition.X = yellowAvatarPosition.X - 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
-                mJPGPosition.X = mJPGPosition.X + 5;
+                yellowAvatarPosition.X = yellowAvatarPosition.X + 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Up))
-                mJPGPosition.Y = mJPGPosition.Y - 5;
+                yellowAvatarPosition.Y = yellowAvatarPosition.Y - 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
-                mJPGPosition.Y = mJPGPosition.Y + 5;
+                yellowAvatarPosition.Y = yellowAvatarPosition.Y + 5;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A))
+                blueAvatarPosition.X = blueAvatarPosition.X - 5;
+            if (Keyboard.GetState().IsKeyDown(Keys.D))
+                blueAvatarPosition.X = blueAvatarPosition.X + 5;
+            if (Keyboard.GetState().IsKeyDown(Keys.W))
+                blueAvatarPosition.Y = blueAvatarPosition.Y - 5;
+            if (Keyboard.GetState().IsKeyDown(Keys.S))
+                blueAvatarPosition.Y = blueAvatarPosition.Y + 5;
 
             #endregion Keyboard
 
@@ -83,7 +96,8 @@ namespace CleanUp
 
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(mJPGImage, mJPGPosition, Color.White);
+            _spriteBatch.Draw(yellowAvatar, yellowAvatarPosition, Color.White);
+            _spriteBatch.Draw(blueAvatar, blueAvatarPosition, Color.White);
 
             _spriteBatch.End();
 

@@ -10,9 +10,11 @@ namespace CleanUp
         private SpriteBatch _spriteBatch;
 
         private Texture2D yellowAvatar;
-        private Texture2D blueAvatar;
         private Vector2 yellowAvatarPosition;
+        private Texture2D blueAvatar;
         private Vector2 blueAvatarPosition;
+        private Texture2D roomWallSection;
+        private Vector2 roomWallSection1Postion;
 
         public Game1()
         {
@@ -35,6 +37,7 @@ namespace CleanUp
             // Load the images.
             yellowAvatar = Content.Load<Texture2D>("yellow_player_avatar");
             blueAvatar = Content.Load<Texture2D>("blue_player_avatar");
+            roomWallSection = Content.Load<Texture2D>("room_border");
         }
 
         protected override void Update(GameTime gameTime)
@@ -98,6 +101,7 @@ namespace CleanUp
 
             _spriteBatch.Draw(yellowAvatar, yellowAvatarPosition, Color.White);
             _spriteBatch.Draw(blueAvatar, blueAvatarPosition, Color.White);
+            _spriteBatch.Draw(roomWallSection, roomWallSection1Postion, Color.White);
 
             _spriteBatch.End();
 
